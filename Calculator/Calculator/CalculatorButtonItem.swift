@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum CalculatorButtonItem {
     enum Op: String {
@@ -28,3 +29,31 @@ enum CalculatorButtonItem {
     case op(Op)
     case command(Command)
 }
+
+extension CalculatorButtonItem {
+    var title: String {
+        switch self {
+        case .digit(let value): return String(value)
+        case .dot: return "."
+        case .op(let op): return op.rawValue
+        case .command(let command): return command.rawValue
+        }
+    }
+
+    var size: CGSize {
+        if case .digit(let value) = self, value == 0 {
+            return CGSize(width: 80 * 2 + 8, height: 80)
+        }
+        return CGSize(width: 80, height: 80)
+    }
+
+    var backgroundColorName: String {
+        switch self {
+        case .digit, .dot: return "digitBackground"
+        case .op: return "operatorBackground"
+        case .command: return "commandBackground"
+        }
+    }
+}
+
+extension CalculatorButtonItem: Hashable {}
