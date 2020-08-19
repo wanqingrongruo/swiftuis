@@ -9,9 +9,10 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    let scale: CGFloat = UIScreen.main.bounds.width / 414
 
     var body: some View {
-        
         VStack(spacing: 12) {
             Spacer()
             Text("0")
@@ -24,7 +25,7 @@ struct ContentView: View {
             CalculatorButtonPad()
                 .padding(.bottom)
         }
-
+        .scaleEffect(scale)
     }
 }
 
