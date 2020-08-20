@@ -54,6 +54,14 @@ extension CalculatorButtonItem {
         case .command: return "commandBackground"
         }
     }
+    
+    var textColorName: String {
+        switch self {
+        case .command: return "commandText"
+        default:
+            return ""
+        }
+    }
 }
 
 extension CalculatorButtonItem: Hashable {}
